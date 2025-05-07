@@ -4,6 +4,8 @@
 ```shell
 #创建venv虚拟环境，并激活
 virtualenv -p python3.9 venv
+export CC=gcc
+
 source venv/bin/activate
 # 安装python依赖
 pip install -r dev-requirements.txt
@@ -14,7 +16,8 @@ cp contrib/conf/settings_local.py.tmpl settings_local.py
 # 将本地配置文件中的数据库路径改为本地路径
 'NAME': os.path.join(ROOT_PATH, 'db.sqlite3'),
 
-# 有些包缺失了：pnpm install -D @babel/core @babel/cli uglify-js lessc rollup @rollup/plugin-babel
+# 有些包缺失了：
+# pnpm install -D @babel/core @babel/cli uglify-js lessc rollup @rollup/plugin-babel
 
 # 运行预初始化脚本
 ./contrib/internal/prepare-dev.py  
