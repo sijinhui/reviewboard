@@ -1384,7 +1384,7 @@ msgstr "Diff 文件更新时间"
 
 #: datagrids/columns.py:154
 msgid "Target Groups"
-msgstr "负责审查群组"
+msgstr "负责审批群组"
 
 #: datagrids/columns.py:169 datagrids/columns.py:170
 msgid "My Comments"
@@ -1407,11 +1407,11 @@ msgstr "新更新"
 
 #: datagrids/columns.py:278 reviews/builtin_fields.py:622
 msgid "People"
-msgstr "审查人"
+msgstr "审批人"
 
 #: datagrids/columns.py:279
 msgid "Target People"
-msgstr "负责审查人"
+msgstr "负责审批人"
 
 #: datagrids/columns.py:293 reviews/builtin_fields.py:202
 msgid "Repository"
@@ -2146,14 +2146,14 @@ msgstr "一般信息"
 #: reviews/admin.py:42 reviews/admin.py:122 reviews/admin.py:203
 #: reviews/builtin_fields.py:663
 msgid "Reviewers"
-msgstr "审查者"
+msgstr "审批人"
 
 #: reviews/admin.py:46
 msgid ""
 "<p>A default reviewer will cover all repositories, unless assigned one or "
 "more specific repositories below.</p>"
 msgstr ""
-"<p>默认的审查人会负责所有的仓库，除非在下面指定一个或多个仓库。</p>"
+"<p>默认的审批人会负责所有的仓库，除非在下面指定一个或多个仓库。</p>"
 
 #: reviews/admin.py:65 scmtools/admin.py:62
 msgid "Access Control"
@@ -2271,13 +2271,13 @@ msgid ""
 "File paths are matched against this regular expression to determine if these "
 "reviewers should be added."
 msgstr ""
-"用来比对文件路径的正则表达式，用以决定这些审查人是否该被加入。"
+"用来比对文件路径的正则表达式，用以决定这些审批人是否该被加入。"
 
 #: reviews/forms.py:44
 msgid ""
 "The list of repositories to specifically match this default reviewer for. If "
 "left empty, this will match all repositories."
-msgstr "用来比对默认审查人的文件库清单。若留白，则会应用到所有的文件库上。"
+msgstr "用来比对默认审批人的文件库清单。若留白，则会应用到所有的文件库上。"
 
 #: reviews/forms.py:67
 #, python-format
@@ -2345,7 +2345,7 @@ msgstr ""
 
 #: reviews/models/default_reviewer.py:38
 msgid "default groups"
-msgstr "预设审查群组"
+msgstr "预设审批群组"
 
 #: reviews/models/default_reviewer.py:40
 msgid "default users"
@@ -2427,7 +2427,7 @@ msgstr "送至仓库"
 
 #: reviews/models/review.py:37
 msgid "Indicates whether the reviewer thinks this code is ready to ship."
-msgstr "指出是否审查者认为这份代码已经可以进行提交。"
+msgstr "指出是否审批者认为这份代码已经可以进行提交。"
 
 #: reviews/models/review.py:44
 msgid "Base reply to"
@@ -2435,7 +2435,7 @@ msgstr ""
 
 #: reviews/models/review.py:45
 msgid "The top-most review in the discussion thread for this review reply."
-msgstr "在这个审查回复的讨论串最上方的 review"
+msgstr "在这个审批回复的讨论串最上方的 review"
 
 #: reviews/models/review.py:47 reviews/models/review_request.py:147
 msgid "e-mail message ID"
@@ -2451,7 +2451,7 @@ msgstr ""
 
 #: reviews/models/review.py:55
 msgid "The review text shown above the diff and screenshot comments."
-msgstr "要在差异文件与截图留言上方显示的审查文字。"
+msgstr "要在差异文件与截图留言上方显示的审批文字。"
 
 #: reviews/models/review.py:58
 msgid "body (bottom)"
@@ -2459,7 +2459,7 @@ msgstr ""
 
 #: reviews/models/review.py:60
 msgid "The review text shown below the diff and screenshot comments."
-msgstr "要在差异文件与截图留言下方显示的审查文字。"
+msgstr "要在差异文件与截图留言下方显示的审批文字。"
 #: reviews/models/review.py:66
 msgid "body (top) reply to"
 msgstr ""
@@ -2507,12 +2507,12 @@ msgstr ""
 #: reviews/models/review_request.py:159
 #: reviews/models/review_request_draft.py:52
 msgid "target groups"
-msgstr "负责审查群组"
+msgstr "负责审批群组"
 
 #: reviews/models/review_request.py:163
 #: reviews/models/review_request_draft.py:56
 msgid "target people"
-msgstr "负责审查人"
+msgstr "负责审批人"
 
 #: reviews/models/review_request.py:169
 #: reviews/models/review_request_draft.py:62
@@ -2528,7 +2528,7 @@ msgstr "过期的截图"
 msgid ""
 "A list of screenshots that used to be but are no longer associated with this "
 "review request."
-msgstr "以前曾与该审查请求关联，但现在不再关联的截图列表。"
+msgstr "以前曾与该审批请求关联，但现在不再关联的截图列表。"
 
 #: reviews/models/review_request.py:182
 #: reviews/models/review_request_draft.py:73
@@ -2543,7 +2543,7 @@ msgstr "过期的附件"
 msgid ""
 "A list of file attachments that used to be but are no longer associated with "
 "this review request."
-msgstr "以前曾与该审查请求关联，但现在不再关联的附件列表。"
+msgstr "以前曾与该审批请求关联，但现在不再关联的附件列表。"
 
 #: reviews/models/review_request.py:194
 msgid "change descriptions"
@@ -3995,7 +3995,7 @@ msgstr "用户"
 
 #: templates/admin/widgets/w-actions.html:44
 msgid "Default Reviewers"
-msgstr "默认审查人"
+msgstr "默认审批人"
 
 #: templates/admin/widgets/w-actions.html:59
 msgid "System Information"
@@ -4019,7 +4019,7 @@ msgstr "日志分析"
 
 #: templates/admin/widgets/w-actions.html:97
 msgid "Review Emails"
-msgstr "审查邮件"
+msgstr "审批邮件"
 
 #: templates/admin/widgets/w-actions.html:104
 msgid "Email TLS Authentication"
@@ -4155,7 +4155,7 @@ msgid ""
 msgstr ""
 "\n"
 " 此群组仅限邀请加入。您必须是群组成员才能查看\n"
-"分配给该群组的任何审查请求。您可以向管理员或群组\n"
+"分配给该群组的任何审批请求。您可以向管理员或群组\n"
 "所有者申请访问权限。\n"
 
 #: templates/datagrids/review_request_listview.html:9
@@ -4304,7 +4304,7 @@ msgstr "下载 Diff 文件"
 
 #: templates/diffviewer/view_diff.html:37 templates/reviews/ui/base.html:26
 msgid "View Reviews"
-msgstr "查看审查"
+msgstr "查看审批"
 
 #: templates/diffviewer/view_diff.html:56
 msgid "Expand changes"
@@ -4336,7 +4336,7 @@ msgstr "显示所有问题"
 
 #: templates/reviews/review_detail.html:4
 msgid "Review Request"
-msgstr "审查请求"
+msgstr "审批请求"
 
 #: templates/reviews/review_detail.html:33 templates/reviews/ui/base.html:28
 msgid "View Diff"
@@ -4357,7 +4357,7 @@ msgstr "此变更已标记为已提交。"
 #: templates/reviews/review_header.html:9
 #: templates/reviews/review_header.html:21
 msgid "Reopen for Review"
-msgstr "重新开放审查"
+msgstr "重新开放审批"
 
 #: templates/reviews/review_header.html:10
 msgid "Describe the submission (optional):"
@@ -4373,7 +4373,7 @@ msgstr "描述舍弃原因（可选）："
 
 #: templates/reviews/review_header.html:34
 msgid "This review request is a draft."
-msgstr "此审查请求是草稿。"
+msgstr "此审批请求是草稿。"
 
 #: templates/reviews/review_header.html:35
 #: templates/reviews/review_header.html:51
@@ -4398,7 +4398,7 @@ msgstr "此草稿添加了新的 diff。"
 
 #: templates/reviews/review_header.html:50
 msgid "This review request is not yet public."
-msgstr "此审查请求尚未公开。"
+msgstr "此审批请求尚未公开。"
 
 #: templates/reviews/review_header.html:53
 #: templates/reviews/reviewable_base.html:24
@@ -4407,7 +4407,7 @@ msgstr "发布"
 
 #: templates/reviews/review_header.html:55
 msgid "Discard Review Request"
-msgstr "舍弃审查请求"
+msgstr "舍弃审批请求"
 
 #: templates/reviews/review_issue_summary_table.html:6
 msgid "Issue Summary"
@@ -4546,15 +4546,15 @@ msgid ""
 " "
 msgstr ""
 "\n"
-"  这个审查请求是私有的。你必须是被请求的审查者，无论是直接指定的还是属于被请求的群组，并且拥有访问该仓库的权限，才能查看这个审查请求。"
+"  这个审批请求是私有的。你必须是被请求的审批者，无论是直接指定的还是属于被请求的群组，并且拥有访问该仓库的权限，才能查看这个审批请求。"
 
 #: templates/reviews/reviewable_base.html:22
 msgid "You have a pending review."
-msgstr "您有一个待处理的审查。"
+msgstr "您有一个待处理的审批。"
 
 #: templates/reviews/reviewable_base.html:23
 msgid "Edit Review"
-msgstr "编辑审查"
+msgstr "编辑审批"
 
 #: templates/reviews/reviewable_base.html:25
 msgid "Discard"
@@ -4702,7 +4702,7 @@ msgstr "新的回复"
 
 #: webapi/resources/review_request_last_update.py:108
 msgid "New review"
-msgstr "新的审查"
+msgstr "新的审批"
 
 #: datagrids/grids.py:490
 msgid "Open Incoming and Outgoing Review Requests"
