@@ -2146,7 +2146,7 @@ msgstr "一般信息"
 #: reviews/admin.py:42 reviews/admin.py:122 reviews/admin.py:203
 #: reviews/builtin_fields.py:663
 msgid "Reviewers"
-msgstr "审批人"
+msgstr ""
 
 #: reviews/admin.py:46
 msgid ""
