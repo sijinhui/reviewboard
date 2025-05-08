@@ -197,7 +197,7 @@ class Profile(models.Model):
                                             related_name="starred_by")
 
     # Allows per-user timezone settings
-    timezone = models.CharField(choices=TIMEZONE_CHOICES, default='UTC',
+    timezone = models.CharField(choices=TIMEZONE_CHOICES, default='Asia/Shanghai',
                                 max_length=30)
 
     settings = JSONField(null=True, default=dict)
