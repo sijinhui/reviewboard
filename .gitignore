@@ -54,3 +54,7 @@ reviewboard/scmtools/testdata/hg_repo/.hg/wcache/
 # else in the tree (which may interfere with builds in strange ways), it'll
 # be easier to spot.
 /node_modules
+
+djblets/
+
+reviewboard/scmtools/testdata/hg_repo/.hg/

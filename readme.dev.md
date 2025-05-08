@@ -2,22 +2,26 @@
 ## 本地开发环境依赖安装
 
 ```shell
-#创建venv虚拟环境，并激活
+#创建venv虚拟环境，并激活， 这个用哪个虚拟环境都行
 virtualenv -p python3.9 venv
 export CC=gcc
 
 source venv/bin/activate
+
+# 有一个坑，需要先安装开发版本的djblets，否则会报错
+# 这里版本需要对应
+git clone https://github.com/djblets/djblets.git -b release-5.2.x
+cd djblets && pip install -e . && cd ..
+
 # 安装python依赖
-pip install -r dev-requirements.txt
-pip install -e .
+# pip install -r dev-requirements.txt
+# pip install -e .
+python ./setup.py develop
+# 环境准备
+python ./contrib/internal/prepare-dev.py
+# 启动开发环境
+./contrib/internal/devserver.py
 
-# 本地配置文件
-cp contrib/conf/settings_local.py.tmpl settings_local.py
-# 将本地配置文件中的数据库路径改为本地路径
-'NAME': os.path.join(ROOT_PATH, 'db.sqlite3'),
-
-# 有些包缺失了：
-# pnpm install -D @babel/core @babel/cli uglify-js lessc rollup @rollup/plugin-babel
 
 # 运行预初始化脚本
 ./contrib/internal/prepare-dev.py  
