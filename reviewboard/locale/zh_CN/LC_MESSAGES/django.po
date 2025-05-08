@@ -1423,11 +1423,11 @@ msgstr "Review次数"
 
 #: datagrids/columns.py:365
 msgid "ID"
-msgstr "编号"
+msgstr ""
 
 #: datagrids/columns.py:366
 msgid "Review Request ID"
-msgstr "Review请求编号"
+msgstr "Review ID"
 
 #: datagrids/columns.py:411 datagrids/columns.py:412
 #: templates/reviews/review_request_actions_primary.html:4

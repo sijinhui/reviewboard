@@ -227,18 +227,21 @@ class ReviewRequestDataGrid(ShowClosedReviewRequestsMixin, DataGrid):
     time_added = DateTimeColumn(
         label=_('Posted'),
         detailed_label=_('Posted Time'),
-        format='F jS, Y, P',
+        #format='F jS, Y, P',
+        format='Y年m月d日 H:i',  # 24小时制，年月日 时分
         shrink=True,
         css_class=lambda r: ageid(r.time_added))
     last_updated = DateTimeColumn(
         label=_('Last Updated'),
-        format='F jS, Y, P',
+        # format='F jS, Y, P',
+        format='Y年m月d日 H:i',  # 24小时制，年月日 时分
         shrink=True,
         db_field='last_updated',
         field_name='last_updated',
         css_class=lambda r: ageid(r.last_updated))
     diff_updated = DiffUpdatedColumn(
-        format='F jS, Y, P',
+        # format='F jS, Y, P',
+        format='Y年m月d日 H:i',  # 24小时制，年月日 时分
         shrink=True,
         css_class=lambda r: ageid(r.diffset_history.last_diff_updated))
     time_added_since = DateTimeSinceColumn(
@@ -290,11 +293,18 @@ class ReviewRequestDataGrid(ShowClosedReviewRequestsMixin, DataGrid):
         self.default_columns = [
             'star',
             'new_updates',
-            'ship_it',
-            'summary',
+            # 'ship_it',
+            # 审批状态列
+            'custom_approval_status',
+            'repository',
             'submitter',
             'time_added',
-            'last_updated_since',
+            'review_id',
+            'target_people',
+            # 是否被提交
+            'already_used_in_post_commit_hook',
+            # 'last_updated_since',
+            'summary',
         ]
 
         # Add local timezone info to the columns.
@@ -440,8 +450,21 @@ class DashboardDataGrid(DataGridSidebarMixin, ReviewRequestDataGrid):
         self.show_archived = False
         self.default_sort = ['-last_updated']
         self.default_columns = [
-            'selected', 'new_updates', 'ship_it', 'my_comments', 'summary',
-            'submitter', 'last_updated_since'
+            'selected',
+            'new_updates',
+            'my_comments',
+            # 'ship_it',
+            # 审批状态列
+            'custom_approval_status',
+            'repository',
+            'submitter',
+            'time_added',
+            'review_id',
+            'target_people',
+            # 是否被提交
+            'already_used_in_post_commit_hook',
+            # 'last_updated_since'
+            'summary',
         ]
 
         self.extra_js_model_data = {
