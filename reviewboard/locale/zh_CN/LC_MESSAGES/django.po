@@ -1477,7 +1477,7 @@ msgstr "分支"
 
 #: datagrids/grids.py:63 datagrids/grids.py:80
 msgid "Posted"
-msgstr "已发布"
+msgstr "申请评审时间"
 
 #: datagrids/grids.py:64
 msgid "Posted Time"
