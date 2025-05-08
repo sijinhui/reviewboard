@@ -37,7 +37,9 @@ reviewboard/htdocs/static
 
 docs/manual/data/htdocs/media/uploaded/
 _build
-build
+# 方便部署，这里直接将发布文件放到一起
+# build
+
 dist
 django_cache
 pickle

@@ -33,6 +33,13 @@ python ./contrib/internal/prepare-dev.py
 # 最好去设置里先设置一下server地址为当前的：http://127.0.0.1:8080
 
 http://127.0.0.1:8080/admin/settings/general/
+
+
+# 最后打包构建，会将发布文件打包到`build/lib/reviewboard/`，使用时挂载即可
+
+python ./setup.py build
+
+
 ```
 
 
