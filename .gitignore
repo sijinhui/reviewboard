@@ -24,8 +24,8 @@ reviewboard.log
 settings_local.py
 
 # Generated locale files
-django.mo
-djangojs.mo
+#django.mo
+#djangojs.mo
 
 # Directories/symlinks
 .DS_Store
