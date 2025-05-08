@@ -94,3 +94,18 @@ INTERNAL_IPS = "127.0.0.1"
 # Cleartool location or executable to use. If unset or blank, will just use
 # `cleartool` from the path.
 # CC_CTEXEC = ''
+
+
+TIME_ZONE = 'Asia/Shanghai'
+#USE_TZ = True  # 使用时区
+LANGUAGE_CODE = 'zh-hans'
+gettext_noop = lambda s: s
+LANGUAGES = (               #<-------------- 此行被增加
+   ('zh-cn', gettext_noop('Simplified Chinese')),               #<-------------- 此行被增加
+   #('zh-tw', gettext_noop('Traditional Chinese')),               #<-------------- 此行被增加
+)
+USE_I18N = True
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))               #<-------------- 此行被增加
+LOCALE_PATHS = (               #<-------------- 此行被增加
+   os.path.join(BASE_DIR, 'locale'),                       #<-------------- 此行被增加
+)
