@@ -30,9 +30,11 @@ djangojs.mo
 # Directories/symlinks
 .DS_Store
 docs/manual/extending/coderef/python
-reviewboard/htdocs/media/djblets
-reviewboard/htdocs/media/uploaded
-reviewboard/htdocs/static
+
+#reviewboard/htdocs/media/djblets
+#reviewboard/htdocs/media/uploaded
+#reviewboard/htdocs/static
+
 docs/manual/data/htdocs/media/uploaded/
 _build
 build
@@ -58,3 +60,5 @@ reviewboard/scmtools/testdata/hg_repo/.hg/wcache/
 djblets/
 
 reviewboard/scmtools/testdata/hg_repo/.hg/
+
+*.sqlite3
