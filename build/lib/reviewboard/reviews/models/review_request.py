@@ -837,7 +837,12 @@ class ReviewRequest(BaseReviewRequestDetails):
         groups = list(self.target_groups.all())
 
         if not groups:
-            return True
+            logger.warning('Review Request pk=%d (display_id=%d) is not '
+                           'have groups.',
+                           self.pk, self.display_id,
+                           extra={'request': request})
+            # 没有目标组时不应该有权限
+            #return True
 
         # We specifically iterate over these instead of making it part
         # of the query in order to keep the logic in Group, and to allow
