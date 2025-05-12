@@ -572,6 +572,14 @@ class DashboardDataGrid(DataGridSidebarMixin, ReviewRequestDataGrid):
                 distinct=False,
                 local_site=self.local_site)
             title = _('All Incoming Review Requests')
+        elif view == 'to-mine':
+            queryset = ReviewRequest.objects.to_user(
+                user,  # The target user
+                user,  # The accessing user
+                status=None,    # all requests
+                distinct=False,
+                local_site=self.local_site)
+            title = _('All Incoming Review Requests with closed')
         else:
             raise Http404
 

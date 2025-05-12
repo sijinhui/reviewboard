@@ -91,6 +91,11 @@ class IncomingSection(BaseSidebarSection):
         local_site = datagrid.local_site
         site_profile = datagrid.site_profile
 
+        # 尝试添加收到的所有请求
+        yield SidebarNavItem(self,
+                             label=_('全部请求'),
+                             view_id='to-mine',)
+
         yield SidebarNavItem(self,
                              label=_('开启状态的请求'),
                              view_id='incoming',
