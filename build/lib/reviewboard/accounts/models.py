@@ -774,10 +774,11 @@ class LocalSiteProfile(models.Model):
             if p.user_id else 0))
     total_incoming_request_count = CounterField(
         _('total incoming review request count'),
-        initializer=lambda p: (
+        default=lambda p: (
             ReviewRequest.objects.to_user(
                 p.user, local_site=p.local_site).count()
             if p.user_id else 0))
+
     pending_outgoing_request_count = CounterField(
         _('pending outgoing review request count'),
         initializer=lambda p: (
@@ -809,6 +810,12 @@ class LocalSiteProfile(models.Model):
                            ('profile', 'local_site'))
         verbose_name = _('Local Site Profile')
         verbose_name_plural = _('Local Site Profiles')
+
+    def get_all_total_incoming_request_count(self):
+        a = ReviewRequest.objects.to_user(
+            self.user, local_site=self.local_site, status=None
+        ).count()
+        return a
 
 
 class Trophy(models.Model):

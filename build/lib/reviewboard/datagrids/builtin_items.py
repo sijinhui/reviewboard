@@ -94,7 +94,9 @@ class IncomingSection(BaseSidebarSection):
         # 尝试添加收到的所有请求
         yield SidebarNavItem(self,
                              label=_('全部请求'),
-                             view_id='to-mine',)
+                             view_id='to-mine',
+                             count=site_profile.get_total_incoming_request_count()
+                             )
 
         yield SidebarNavItem(self,
                              label=_('开启状态的请求'),
