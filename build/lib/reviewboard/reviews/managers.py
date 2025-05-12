@@ -1262,11 +1262,12 @@ class ReviewRequestManager(ConcurrencyManager):
                     visible_only=False,
                     local_site=local_site)
 
+                # 权限调整，同样将没有设置审查组的评论请求在all中也隐藏
                 group_q = Q(
-                    Q(~Exists(
-                        target_groups_m2m
-                        .filter(reviewrequest_id=OuterRef('pk'))
-                    )) |
+                    # Q(~Exists(
+                    #     target_groups_m2m
+                    #     .filter(reviewrequest_id=OuterRef('pk'))
+                    # )) |
                     Q(Exists(
                         target_groups_m2m
                         .filter(
