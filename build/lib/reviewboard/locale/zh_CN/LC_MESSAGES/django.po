@@ -1344,9 +1344,13 @@ msgstr ""
 msgid "fields changed"
 msgstr "字段更改"
 
+#: datagrids/builtin_items.py:28
+msgid "Overview"
+msgstr "概述"
+
 #: datagrids/builtin_items.py:20
 msgid "Outgoing"
-msgstr "发出的"
+msgstr "我提出的REVIEW请求"
 
 #: datagrids/builtin_items.py:26
 #: templates/reviews/review_issue_summary_table.html:33
@@ -1363,7 +1367,7 @@ msgstr "开启"
 
 #: datagrids/builtin_items.py:54
 msgid "Incoming"
-msgstr "收到的"
+msgstr "我收到的REVIEW请求"
 
 #: datagrids/builtin_items.py:66 datagrids/columns.py:519
 msgid "To Me"
@@ -1523,11 +1527,11 @@ msgstr "所有送至我的群組的 Review Requests"
 
 #: datagrids/grids.py:247
 msgid "Starred Review Requests"
-msgstr "標記星號的 Review Requests"
+msgstr "标记型号的 Review Requests"
 
 #: datagrids/grids.py:251
 msgid "All Incoming Review Requests"
-msgstr "所有送來的 Review Requests"
+msgstr "所有收到的 Review Requests"
 
 #: datagrids/grids.py:261
 msgid "Full Name"
@@ -4706,7 +4710,8 @@ msgstr "新的审批"
 
 #: datagrids/grids.py:490
 msgid "Open Incoming and Outgoing Review Requests"
-msgstr "开启中的收到和发出的Review请求"
+msgstr ""
+# 开启中的收到和发出的Review请求
 
 msgid "Add a general comment"
 msgstr "添加一条评论"

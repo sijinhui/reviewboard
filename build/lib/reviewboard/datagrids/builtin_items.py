@@ -48,11 +48,11 @@ class OutgoingSection(BaseSidebarSection):
         site_profile = self.datagrid.site_profile
 
         yield SidebarNavItem(self,
-                             label=_('All'),
+                             label=_('全部请求'),
                              view_id='mine',
                              count=site_profile.total_outgoing_request_count)
         yield SidebarNavItem(self,
-                             label=_('Open'),
+                             label=_('开启状态的请求'),
                              view_id='outgoing',
                              count=site_profile.pending_outgoing_request_count)
 
@@ -92,14 +92,14 @@ class IncomingSection(BaseSidebarSection):
         site_profile = datagrid.site_profile
 
         yield SidebarNavItem(self,
-                             label=_('Open'),
+                             label=_('开启状态的请求'),
                              view_id='incoming',
                              count=site_profile.total_incoming_request_count)
 
-        yield SidebarNavItem(self,
-                             label=_('To Me'),
-                             view_id='to-me',
-                             count=site_profile.direct_incoming_request_count)
+        # yield SidebarNavItem(self,
+        #                      label=_('To Me'),
+        #                      view_id='to-me',
+        #                      count=site_profile.direct_incoming_request_count)
 
         if site_profile.starred_public_request_count > 0:
             yield SidebarNavItem(
