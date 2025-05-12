@@ -786,6 +786,10 @@ class ReviewRequest(BaseReviewRequestDetails):
             bool:
             Whether the review request is accessible by the user.
         """
+        # always have access to superuser
+        if user and user.is_superuser:
+            return True
+
         # Users always have access to their own review requests.
         if self.submitter == user:
             return True
