@@ -91,11 +91,15 @@ class IncomingSection(BaseSidebarSection):
         local_site = datagrid.local_site
         site_profile = datagrid.site_profile
 
+        from reviewboard.reviews.models.review_request import ReviewRequest
+        all_count = ReviewRequest.objects.to_user(
+            site_profile.user, local_site=site_profile.local_site, status=None
+        ).count()
         # 尝试添加收到的所有请求
         yield SidebarNavItem(self,
                              label=_('全部请求'),
                              view_id='to-mine',
-                             count=site_profile.get_total_incoming_request_count()
+                             count=all_count
                              )
 
         yield SidebarNavItem(self,
