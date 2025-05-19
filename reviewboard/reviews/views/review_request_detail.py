@@ -87,7 +87,16 @@ class ReviewRequestDetailView(ReviewRequestViewMixin,
             The ETag for the page.
         """
         review_request = self.review_request
+        from reviewboard.diffviewer.models.diffset import DiffSet
 
+        diff_msg = DiffSet.objects.filter(
+            history_id=review_request.diffset_history.id
+        ).order_by('-timestamp').values('revision').first()
+        diff_revision = None
+        if diff_msg:
+            diff_revision = diff_msg['revision']
+
+        self.review_request.my_diff_revision = diff_revision
         # Track the visit to this review request, so the dashboard can
         # reflect whether there are new updates.
         self.visited, self.last_visited = self.track_review_request_visit()
@@ -296,6 +305,7 @@ class ReviewRequestDetailView(ReviewRequestViewMixin,
             'review_request_status_html': review_request_status_html,
             'review_request_visit': self.visited,
             'screenshots': data.active_screenshots,
+            'my_diff_revision': self.review_request.my_diff_revision,
         })
 
         return context
