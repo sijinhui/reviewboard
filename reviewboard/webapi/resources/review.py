@@ -54,7 +54,7 @@ class ReviewResource(BaseReviewResource):
             'base_reply_to__isnull': True,
         }
 
-    def update_review(self, request, review, ship_it=None, *args, **kwargs):
+    def update_review(self, request, review, ship_it=None, diff_revision_id=None, *args, **kwargs):
         """Common function to update fields on a draft review.
 
         If the review is public and the caller has requested to set the Ship It
@@ -87,6 +87,25 @@ class ReviewResource(BaseReviewResource):
         # a special ability to revoke Ship Its. This is considered different
         # than modifying a review, as modification requires an unpublished
         # review.
+        print('>>>>>>:', ship_it)
+        print(review.review_request_id)
+        from reviewboard.diffviewer.models.diffset import DiffSet
+        from reviewboard.reviews.models.review_request import ReviewRequest
+        request_obj = ReviewRequest.objects.filter(id=review.review_request_id).values('diffset_history_id').first()
+        if request_obj and request_obj['diffset_history_id']:
+            diff_msg = DiffSet.objects.filter(
+                history_id=request_obj['diffset_history_id']
+            ).order_by('-timestamp').values('revision').first()
+            diff_revision = None
+            if diff_msg:
+                diff_revision = diff_msg['revision']
+                if diff_revision != diff_revision_id:
+                    return INVALID_FORM_DATA, {
+                        'fields': {
+                            'diff_revision_err': ('当前审批的diff版本已过时，请刷新页面重新审批!'),
+                        }
+                    }
+
         if review.public:
             if ship_it is False:
                 if not review.can_user_revoke_ship_it(request.user):
