@@ -600,7 +600,12 @@ export class ReviewablePageView<
         }
 
         if (confirm(_`Are you sure you want to post this review?`)) {
-            await this.model.markShipIt();
+
+            // JQ获取ID元素文本
+            const idElement = $('#diff_revision_id').text();
+
+
+            await this.model.markShipIt(idElement);
 
             const reviewRequest = this.model.get('reviewRequest');
             RB.navigateTo(reviewRequest.get('reviewURL'));
