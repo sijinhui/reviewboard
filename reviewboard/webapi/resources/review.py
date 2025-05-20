@@ -96,10 +96,9 @@ class ReviewResource(BaseReviewResource):
                 diff_msg = DiffSet.objects.filter(
                     history_id=request_obj['diffset_history_id']
                 ).order_by('-timestamp').values('revision').first()
-                diff_revision = None
+
                 if diff_msg:
-                    diff_revision = diff_msg['revision']
-                    if diff_revision != diff_revision_id:
+                    if diff_msg['revision'] != diff_revision_id:
                         return INVALID_FORM_DATA, {
                             'fields': {
                                 'diff_revision_err': '当前审批的diff版本已过时，请刷新页面重新审批!',
