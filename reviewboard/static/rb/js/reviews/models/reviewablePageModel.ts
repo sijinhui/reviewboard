@@ -183,7 +183,6 @@ export class ReviewablePage<
      * changing the text to say "Ship It!".
      */
     async markShipIt(idElement = '') {
-        alert(idElement)
         const pendingReview = this.get('pendingReview');
 
         await pendingReview.ready();
