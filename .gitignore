@@ -64,3 +64,6 @@ djblets/
 reviewboard/scmtools/testdata/hg_repo/.hg/
 
 *.sqlite3
+
+.venv/
+venv/
