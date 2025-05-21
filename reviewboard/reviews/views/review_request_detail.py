@@ -92,7 +92,7 @@ class ReviewRequestDetailView(ReviewRequestViewMixin,
         diff_msg = DiffSet.objects.filter(
             history_id=review_request.diffset_history.id
         ).order_by('-timestamp').values('revision').first()
-        diff_revision = None
+        diff_revision = ''
         if diff_msg:
             diff_revision = diff_msg['revision']
 

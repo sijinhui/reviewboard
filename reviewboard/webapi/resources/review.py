@@ -87,7 +87,12 @@ class ReviewResource(BaseReviewResource):
         # a special ability to revoke Ship Its. This is considered different
         # than modifying a review, as modification requires an unpublished
         # review.
-        diff_revision_id = request.POST.get('diff_revision_id')
+        post_data = request.POST.copy()
+        body_top = post_data.get('body_top').split('|')
+        post_data['body_top'] =body_top[0]
+        request._post = post_data
+
+        diff_revision_id = body_top[-1]
         from reviewboard.diffviewer.models.diffset import DiffSet
         from reviewboard.reviews.models.review_request import ReviewRequest
         if diff_revision_id:
