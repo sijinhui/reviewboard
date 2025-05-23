@@ -32,6 +32,9 @@
 
   <div class="rb-c-review-request__fields">
 {%   include "reviews/review_request_box.html" with show_issue_summary_table=True %}
+
+      <span id="diff-revision-id" style="display: none;" >{{ review_request.my_diff_revision }}</span>
+
   </div>
  </section>
 </div>
