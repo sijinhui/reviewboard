@@ -1325,8 +1325,6 @@
           const saveOptions = _.defaults({
             error: (model, xhr, options) => {
               this.trigger('saveFailed', options);
-              // console.log('----', xhr.responseJSON);
-
               if (xhr.responseJSON.stat === 'fail' && xhr.responseJSON.fields?.diff_revision_err) {
                 alert(xhr.responseJSON.fields.diff_revision_err);
                 window.location.reload(); // alert 只有确定按钮，点击后直接刷新

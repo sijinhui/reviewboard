@@ -604,7 +604,6 @@ export class BaseResource<
             const saveOptions = _.defaults({
                 error: (model, xhr, options) => {
                     this.trigger('saveFailed', options);
-                    // console.log('----', xhr.responseJSON);
 
                     if (xhr.responseJSON.stat === 'fail' &&
                         xhr.responseJSON.fields?.diff_revision_err) {

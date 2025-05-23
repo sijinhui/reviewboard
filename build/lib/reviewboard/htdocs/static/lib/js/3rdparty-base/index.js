@@ -242,7 +242,7 @@
 	var global$i = _globalExports;
 	var core$4 = _coreExports;
 	var hide$6 = require_hide();
-	var redefine$7 = _redefineExports;
+	var redefine$6 = _redefineExports;
 	var ctx$9 = _ctx;
 	var PROTOTYPE$3 = 'prototype';
 	var $export$23 = function (type, name, source) {
@@ -264,7 +264,7 @@
 	    // bind timers to global for call from export context
 	    exp = IS_BIND && own ? ctx$9(out, global$i) : IS_PROTO && typeof out == 'function' ? ctx$9(Function.call, out) : out;
 	    // extend global
-	    if (target) redefine$7(target, key, out, type & $export$23.U);
+	    if (target) redefine$6(target, key, out, type & $export$23.U);
 	    // export
 	    if (exports[key] != out) hide$6(exports, key, exp);
 	    if (IS_PROTO && expProto[key] != out) expProto[key] = out;
@@ -656,7 +656,7 @@
 	var has$5 = _has;
 	var DESCRIPTORS$5 = _descriptors;
 	var $export$22 = _export;
-	var redefine$6 = _redefineExports;
+	var redefine$5 = _redefineExports;
 	var META = _metaExports.KEY;
 	var $fails$2 = _fails;
 	var shared$1 = _sharedExports;
@@ -805,7 +805,7 @@
 	    });
 	    return wrap$1(tag);
 	  };
-	  redefine$6($Symbol[PROTOTYPE$1], 'toString', function toString() {
+	  redefine$5($Symbol[PROTOTYPE$1], 'toString', function toString() {
 	    return this._k;
 	  });
 	  $GOPD$1.f = $getOwnPropertyDescriptor$1;
@@ -814,7 +814,7 @@
 	  require_objectPie().f = $propertyIsEnumerable;
 	  $GOPS.f = $getOwnPropertySymbols;
 	  if (DESCRIPTORS$5 && !_library) {
-	    redefine$6(ObjectProto$1, 'propertyIsEnumerable', $propertyIsEnumerable, true);
+	    redefine$5(ObjectProto$1, 'propertyIsEnumerable', $propertyIsEnumerable, true);
 	  }
 	  wksExt.f = function (name) {
 	    return wrap$1(wks$3(name));
@@ -1937,7 +1937,7 @@
 	};
 
 	var $export$1o = _export;
-	var redefine$5 = _redefineExports;
+	var redefine$4 = _redefineExports;
 	var hide$5 = require_hide();
 	var Iterators$5 = _iterators;
 	var $iterCreate = _iterCreate;
@@ -2009,7 +2009,7 @@
 	      entries: $entries
 	    };
 	    if (FORCED) for (key in methods) {
-	      if (!(key in proto)) redefine$5(proto, key, methods[key]);
+	      if (!(key in proto)) redefine$4(proto, key, methods[key]);
 	    } else $export$1o($export$1o.P + $export$1o.F * (BUGGY || VALUES_BUG), NAME, methods);
 	  }
 	  return methods;
@@ -3067,7 +3067,7 @@
 	  return builtinExec.call(R, S);
 	};
 
-	var redefine$4 = _redefineExports;
+	var redefine$3 = _redefineExports;
 	var hide$4 = require_hide();
 	var fails$4 = _fails;
 	var defined$2 = _defined;
@@ -3151,7 +3151,7 @@
 	    });
 	    var strfn = fns[0];
 	    var rxfn = fns[1];
-	    redefine$4(String.prototype, KEY, strfn);
+	    redefine$3(String.prototype, KEY, strfn);
 	    hide$4(RegExp.prototype, SYMBOL, length == 2
 	    // 21.2.5.8 RegExp.prototype[@@replace](string, replaceValue)
 	    // 21.2.5.11 RegExp.prototype[@@split](string, limit)
@@ -3720,11 +3720,18 @@
 	  return promiseCapability.promise;
 	};
 
-	var redefine$3 = _redefineExports;
-	var _redefineAll = function (target, src, safe) {
-	  for (var key in src) redefine$3(target, key, src[key], safe);
-	  return target;
-	};
+	var _redefineAll;
+	var hasRequired_redefineAll;
+	function require_redefineAll() {
+	  if (hasRequired_redefineAll) return _redefineAll;
+	  hasRequired_redefineAll = 1;
+	  var redefine = _redefineExports;
+	  _redefineAll = function (target, src, safe) {
+	    for (var key in src) redefine(target, key, src[key], safe);
+	    return target;
+	  };
+	  return _redefineAll;
+	}
 
 	var global$9 = _globalExports;
 	var ctx$4 = _ctx;
@@ -3924,7 +3931,7 @@
 	    this._h = 0; // <- rejection state, 0 - default, 1 - handled, 2 - unhandled
 	    this._n = false; // <- notify
 	  };
-	  Internal.prototype = _redefineAll($Promise.prototype, {
+	  Internal.prototype = require_redefineAll()($Promise.prototype, {
 	    // 25.4.5.3 Promise.prototype.then(onFulfilled, onRejected)
 	    then: function then(onFulfilled, onRejected) {
 	      var reaction = newPromiseCapability$1(speciesConstructor$3(this, $Promise));
@@ -4027,7 +4034,7 @@
 
 	var dP$3 = _objectDp.f;
 	var create$2 = _objectCreate;
-	var redefineAll$4 = _redefineAll;
+	var redefineAll$4 = require_redefineAll();
 	var ctx$3 = _ctx;
 	var anInstance$4 = _anInstance;
 	var forOf$5 = _forOfExports;
@@ -4177,7 +4184,7 @@
 	var global$8 = _globalExports;
 	var $export$W = _export;
 	var redefine$2 = _redefineExports;
-	var redefineAll$3 = _redefineAll;
+	var redefineAll$3 = require_redefineAll();
 	var meta$1 = _metaExports;
 	var forOf$4 = _forOfExports;
 	var anInstance$3 = _anInstance;
@@ -4304,7 +4311,7 @@
 	  set exports(v){ es6_weakMapExports = v; },
 	};
 
-	var redefineAll$2 = _redefineAll;
+	var redefineAll$2 = require_redefineAll();
 	var getWeak$1 = _metaExports.getWeak;
 	var anObject$n = _anObject;
 	var isObject$7 = _isObject;
@@ -4504,7 +4511,7 @@
 	  var DESCRIPTORS = _descriptors;
 	  var $typed = _typed;
 	  var hide = require_hide();
-	  var redefineAll = _redefineAll;
+	  var redefineAll = require_redefineAll();
 	  var fails = _fails;
 	  var anInstance = _anInstance;
 	  var toInteger = _toInteger;
@@ -4841,7 +4848,7 @@
 	  var anInstance$1 = _anInstance;
 	  var propertyDesc = _propertyDesc;
 	  var hide$2 = require_hide();
-	  var redefineAll$1 = _redefineAll;
+	  var redefineAll$1 = require_redefineAll();
 	  var toInteger$1 = _toInteger;
 	  var toLength$5 = _toLength;
 	  var toIndex = _toIndex;
@@ -6436,7 +6443,7 @@
 	var aFunction = _aFunction;
 	var anObject = _anObject;
 	var anInstance = _anInstance;
-	var redefineAll = _redefineAll;
+	var redefineAll = require_redefineAll();
 	var hide$1 = require_hide();
 	var forOf = _forOfExports;
 	var RETURN = forOf.RETURN;
