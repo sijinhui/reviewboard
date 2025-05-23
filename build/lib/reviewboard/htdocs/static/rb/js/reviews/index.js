@@ -2213,11 +2213,13 @@
        * This will create and publish a review, setting the Ship It state and
        * changing the text to say "Ship It!".
        */
-      async markShipIt() {
+      async markShipIt(idElement = '') {
         const pendingReview = this.get('pendingReview');
         await pendingReview.ready();
         pendingReview.set({
-          bodyTop: gettext("Ship It!"),
+          bodyTop: interpolate(gettext("Ship It!|%(idElement)s"), {
+            "idElement": idElement
+          }, true),
           shipIt: true
         });
         await pendingReview.publish();
@@ -13494,7 +13496,9 @@ ${gettext("This draft adds a new diff.")}
           e.stopPropagation();
         }
         if (confirm(gettext("Are you sure you want to post this review?"))) {
-          await this.model.markShipIt();
+          // JQ获取ID元素文本
+          const idElement = $('#diff-revision-id').text();
+          await this.model.markShipIt(idElement);
           const reviewRequest = this.model.get('reviewRequest');
           RB.navigateTo(reviewRequest.get('reviewURL'));
         }
