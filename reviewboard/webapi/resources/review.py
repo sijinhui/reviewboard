@@ -92,7 +92,7 @@ class ReviewResource(BaseReviewResource):
         post_data['body_top'] =body_top[0]
         request._post = post_data
 
-        diff_revision_id = body_top[-1]
+        diff_revision_id = body_top[-1] if len(body_top) > 1 else None
         from reviewboard.diffviewer.models.diffset import DiffSet
         from reviewboard.reviews.models.review_request import ReviewRequest
         if diff_revision_id:
