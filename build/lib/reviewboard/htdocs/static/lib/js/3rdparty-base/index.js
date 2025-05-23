@@ -413,10 +413,10 @@
 	};
 
 	// to indexed object, toObject with fallback for non-array-like ES3 strings
-	var IObject$2 = require_iobject();
+	var IObject$3 = require_iobject();
 	var defined$9 = _defined;
 	var _toIobject = function (it) {
-	  return IObject$2(defined$9(it));
+	  return IObject$3(defined$9(it));
 	};
 
 	// 7.1.4 ToInteger
@@ -514,15 +514,15 @@
 	}
 
 	// all enumerable object keys, includes symbols
-	var getKeys$2 = _objectKeys;
-	var gOPS$1 = _objectGops;
-	var pIE$1 = require_objectPie();
+	var getKeys$3 = _objectKeys;
+	var gOPS$2 = _objectGops;
+	var pIE$2 = require_objectPie();
 	var _enumKeys = function (it) {
-	  var result = getKeys$2(it);
-	  var getSymbols = gOPS$1.f;
+	  var result = getKeys$3(it);
+	  var getSymbols = gOPS$2.f;
 	  if (getSymbols) {
 	    var symbols = getSymbols(it);
-	    var isEnum = pIE$1.f;
+	    var isEnum = pIE$2.f;
 	    var i = 0;
 	    var key;
 	    while (symbols.length > i) if (isEnum.call(it, key = symbols[i++])) result.push(key);
@@ -635,7 +635,7 @@
 
 	var _objectGopd = {};
 
-	var pIE = require_objectPie();
+	var pIE$1 = require_objectPie();
 	var createDesc$3 = _propertyDesc;
 	var toIObject$8 = _toIobject;
 	var toPrimitive$7 = _toPrimitive;
@@ -648,13 +648,13 @@
 	  if (IE8_DOM_DEFINE) try {
 	    return gOPD$8(O, P);
 	  } catch (e) {/* empty */}
-	  if (has$6(O, P)) return createDesc$3(!pIE.f.call(O, P), O[P]);
+	  if (has$6(O, P)) return createDesc$3(!pIE$1.f.call(O, P), O[P]);
 	};
 
 	// ECMAScript 6 symbols shim
 	var global$g = _globalExports;
 	var has$5 = _has;
-	var DESCRIPTORS$4 = _descriptors;
+	var DESCRIPTORS$5 = _descriptors;
 	var $export$22 = _export;
 	var redefine$5 = _redefineExports;
 	var META = _metaExports.KEY;
@@ -669,7 +669,7 @@
 	var isArray$2 = _isArray;
 	var anObject$y = _anObject;
 	var isObject$o = _isObject;
-	var toObject$g = _toObject;
+	var toObject$h = _toObject;
 	var toIObject$7 = _toIobject;
 	var toPrimitive$6 = _toPrimitive;
 	var createDesc$2 = _propertyDesc;
@@ -699,7 +699,7 @@
 	var setter = !QObject || !QObject[PROTOTYPE$1] || !QObject[PROTOTYPE$1].findChild;
 
 	// fallback for old Android, https://code.google.com/p/v8/issues/detail?id=687
-	var setSymbolDesc = DESCRIPTORS$4 && $fails$2(function () {
+	var setSymbolDesc = DESCRIPTORS$5 && $fails$2(function () {
 	  return _create(dP$8({}, 'a', {
 	    get: function () {
 	      return dP$8(this, 'a', {
@@ -799,7 +799,7 @@
 	      if (has$5(this, HIDDEN) && has$5(this[HIDDEN], tag)) this[HIDDEN][tag] = false;
 	      setSymbolDesc(this, tag, createDesc$2(1, value));
 	    };
-	    if (DESCRIPTORS$4 && setter) setSymbolDesc(ObjectProto$1, tag, {
+	    if (DESCRIPTORS$5 && setter) setSymbolDesc(ObjectProto$1, tag, {
 	      configurable: true,
 	      set: $set
 	    });
@@ -813,7 +813,7 @@
 	  _objectGopn.f = gOPNExt.f = $getOwnPropertyNames;
 	  require_objectPie().f = $propertyIsEnumerable;
 	  $GOPS.f = $getOwnPropertySymbols;
-	  if (DESCRIPTORS$4 && !_library) {
+	  if (DESCRIPTORS$5 && !_library) {
 	    redefine$5(ObjectProto$1, 'propertyIsEnumerable', $propertyIsEnumerable, true);
 	  }
 	  wksExt.f = function (name) {
@@ -866,7 +866,7 @@
 	});
 	$export$22($export$22.S + $export$22.F * FAILS_ON_PRIMITIVES, 'Object', {
 	  getOwnPropertySymbols: function getOwnPropertySymbols(it) {
-	    return $GOPS.f(toObject$g(it));
+	    return $GOPS.f(toObject$h(it));
 	  }
 	});
 
@@ -947,11 +947,11 @@
 
 	// 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 	var has$4 = _has;
-	var toObject$f = _toObject;
+	var toObject$g = _toObject;
 	var IE_PROTO = _sharedKey('IE_PROTO');
 	var ObjectProto = Object.prototype;
 	var _objectGpo = Object.getPrototypeOf || function (O) {
-	  O = toObject$f(O);
+	  O = toObject$g(O);
 	  if (has$4(O, IE_PROTO)) return O[IE_PROTO];
 	  if (typeof O.constructor == 'function' && O instanceof O.constructor) {
 	    return O.constructor.prototype;
@@ -960,20 +960,20 @@
 	};
 
 	// 19.1.2.9 Object.getPrototypeOf(O)
-	var toObject$e = _toObject;
+	var toObject$f = _toObject;
 	var $getPrototypeOf = _objectGpo;
 	_objectSap('getPrototypeOf', function () {
 	  return function getPrototypeOf(it) {
-	    return $getPrototypeOf(toObject$e(it));
+	    return $getPrototypeOf(toObject$f(it));
 	  };
 	});
 
 	// 19.1.2.14 Object.keys(O)
-	var toObject$d = _toObject;
+	var toObject$e = _toObject;
 	var $keys = _objectKeys;
 	_objectSap('keys', function () {
 	  return function keys(it) {
-	    return $keys(toObject$d(it));
+	    return $keys(toObject$e(it));
 	  };
 	});
 
@@ -1033,59 +1033,52 @@
 	  };
 	});
 
-	var _objectAssign;
-	var hasRequired_objectAssign;
-	function require_objectAssign() {
-	  if (hasRequired_objectAssign) return _objectAssign;
-	  hasRequired_objectAssign = 1;
-	  // 19.1.2.1 Object.assign(target, source, ...)
-	  var DESCRIPTORS = _descriptors;
-	  var getKeys = _objectKeys;
-	  var gOPS = _objectGops;
-	  var pIE = require_objectPie();
-	  var toObject = _toObject;
-	  var IObject = require_iobject();
-	  var $assign = Object.assign;
+	// 19.1.2.1 Object.assign(target, source, ...)
+	var DESCRIPTORS$4 = _descriptors;
+	var getKeys$2 = _objectKeys;
+	var gOPS$1 = _objectGops;
+	var pIE = require_objectPie();
+	var toObject$d = _toObject;
+	var IObject$2 = require_iobject();
+	var $assign = Object.assign;
 
-	  // should work with symbols and should have deterministic property order (V8 bug)
-	  _objectAssign = !$assign || _fails(function () {
-	    var A = {};
-	    var B = {};
-	    // eslint-disable-next-line no-undef
-	    var S = Symbol();
-	    var K = 'abcdefghijklmnopqrst';
-	    A[S] = 7;
-	    K.split('').forEach(function (k) {
-	      B[k] = k;
-	    });
-	    return $assign({}, A)[S] != 7 || Object.keys($assign({}, B)).join('') != K;
-	  }) ? function assign(target, source) {
-	    // eslint-disable-line no-unused-vars
-	    var T = toObject(target);
-	    var aLen = arguments.length;
-	    var index = 1;
-	    var getSymbols = gOPS.f;
-	    var isEnum = pIE.f;
-	    while (aLen > index) {
-	      var S = IObject(arguments[index++]);
-	      var keys = getSymbols ? getKeys(S).concat(getSymbols(S)) : getKeys(S);
-	      var length = keys.length;
-	      var j = 0;
-	      var key;
-	      while (length > j) {
-	        key = keys[j++];
-	        if (!DESCRIPTORS || isEnum.call(S, key)) T[key] = S[key];
-	      }
+	// should work with symbols and should have deterministic property order (V8 bug)
+	var _objectAssign = !$assign || _fails(function () {
+	  var A = {};
+	  var B = {};
+	  // eslint-disable-next-line no-undef
+	  var S = Symbol();
+	  var K = 'abcdefghijklmnopqrst';
+	  A[S] = 7;
+	  K.split('').forEach(function (k) {
+	    B[k] = k;
+	  });
+	  return $assign({}, A)[S] != 7 || Object.keys($assign({}, B)).join('') != K;
+	}) ? function assign(target, source) {
+	  // eslint-disable-line no-unused-vars
+	  var T = toObject$d(target);
+	  var aLen = arguments.length;
+	  var index = 1;
+	  var getSymbols = gOPS$1.f;
+	  var isEnum = pIE.f;
+	  while (aLen > index) {
+	    var S = IObject$2(arguments[index++]);
+	    var keys = getSymbols ? getKeys$2(S).concat(getSymbols(S)) : getKeys$2(S);
+	    var length = keys.length;
+	    var j = 0;
+	    var key;
+	    while (length > j) {
+	      key = keys[j++];
+	      if (!DESCRIPTORS$4 || isEnum.call(S, key)) T[key] = S[key];
 	    }
-	    return T;
-	  } : $assign;
-	  return _objectAssign;
-	}
+	  }
+	  return T;
+	} : $assign;
 
 	// 19.1.3.1 Object.assign(target, source)
 	var $export$1Z = _export;
 	$export$1Z($export$1Z.S + $export$1Z.F, 'Object', {
-	  assign: require_objectAssign()
+	  assign: _objectAssign
 	});
 
 	// 7.2.9 SameValue(x, y)
@@ -4404,7 +4397,7 @@
 	var each = _arrayMethods(0);
 	var redefine$1 = _redefineExports;
 	var meta = _metaExports;
-	var assign = require_objectAssign();
+	var assign = _objectAssign;
 	var weak$1 = _collectionWeak;
 	var isObject$6 = _isObject;
 	var validate$2 = _validateCollection;
