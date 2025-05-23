@@ -3746,6 +3746,7 @@ body.datagrid-page #page-container #content .main {
 #page-container .datagrid .age5 {
   color: var(--ink-p-fg);
   white-space: nowrap;
+  background: none !important;
 }
 #page-container .datagrid .age1 {
   background: var(--if-dark, #0a5507) var(--if-light, #beedbc);
