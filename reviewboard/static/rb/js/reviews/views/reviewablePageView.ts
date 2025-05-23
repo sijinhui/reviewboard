@@ -602,7 +602,7 @@ export class ReviewablePageView<
         if (confirm(_`Are you sure you want to post this review?`)) {
 
             // JQ获取ID元素文本
-            const idElement = $('#diff_revision_id').text();
+            const idElement = $('#diff-revision-id').text();
 
 
             await this.model.markShipIt(idElement);
