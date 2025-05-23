@@ -62,9 +62,9 @@
 	  return typeof it === 'object' ? it !== null : typeof it === 'function';
 	};
 
-	var isObject$q = _isObject;
+	var isObject$r = _isObject;
 	var _anObject = function (it) {
-	  if (!isObject$q(it)) throw TypeError(it + ' is not an object!');
+	  if (!isObject$r(it)) throw TypeError(it + ' is not an object!');
 	  return it;
 	};
 
@@ -92,15 +92,15 @@
 	});
 
 	// 7.1.1 ToPrimitive(input [, PreferredType])
-	var isObject$p = _isObject;
+	var isObject$q = _isObject;
 	// instead of the ES6 spec version, we didn't implement @@toPrimitive case
 	// and the second argument - flag - preferred type is a string
 	var _toPrimitive = function (it, S) {
-	  if (!isObject$p(it)) return it;
+	  if (!isObject$q(it)) return it;
 	  var fn, val;
-	  if (S && typeof (fn = it.toString) == 'function' && !isObject$p(val = fn.call(it))) return val;
-	  if (typeof (fn = it.valueOf) == 'function' && !isObject$p(val = fn.call(it))) return val;
-	  if (!S && typeof (fn = it.toString) == 'function' && !isObject$p(val = fn.call(it))) return val;
+	  if (S && typeof (fn = it.toString) == 'function' && !isObject$q(val = fn.call(it))) return val;
+	  if (typeof (fn = it.valueOf) == 'function' && !isObject$q(val = fn.call(it))) return val;
+	  if (!S && typeof (fn = it.toString) == 'function' && !isObject$q(val = fn.call(it))) return val;
 	  throw TypeError("Can't convert object to primitive value");
 	};
 
@@ -215,9 +215,9 @@
 	};
 
 	// optional / simple context binding
-	var aFunction$d = _aFunction;
+	var aFunction$e = _aFunction;
 	var _ctx = function (fn, that, length) {
-	  aFunction$d(fn);
+	  aFunction$e(fn);
 	  if (that === undefined) return fn;
 	  switch (length) {
 	    case 1:
@@ -289,7 +289,7 @@
 	};
 
 	var META$1 = _uid('meta');
-	var isObject$o = _isObject;
+	var isObject$p = _isObject;
 	var has$9 = _has;
 	var setDesc = _objectDp.f;
 	var id$1 = 0;
@@ -310,7 +310,7 @@
 	};
 	var fastKey$1 = function (it, create) {
 	  // return primitive with prefix
-	  if (!isObject$o(it)) return typeof it == 'symbol' ? it : (typeof it == 'string' ? 'S' : 'P') + it;
+	  if (!isObject$p(it)) return typeof it == 'symbol' ? it : (typeof it == 'string' ? 'S' : 'P') + it;
 	  if (!has$9(it, META$1)) {
 	    // can't set metadata to uncaught frozen object
 	    if (!isExtensible$1(it)) return 'F';
@@ -668,7 +668,7 @@
 	var enumKeys = _enumKeys;
 	var isArray$2 = _isArray;
 	var anObject$y = _anObject;
-	var isObject$n = _isObject;
+	var isObject$o = _isObject;
 	var toObject$h = _toObject;
 	var toIObject$7 = _toIobject;
 	var toPrimitive$6 = _toPrimitive;
@@ -886,7 +886,7 @@
 	    var replacer, $replacer;
 	    while (arguments.length > i) args.push(arguments[i++]);
 	    $replacer = replacer = args[1];
-	    if (!isObject$n(replacer) && it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
+	    if (!isObject$o(replacer) && it === undefined || isSymbol(it)) return; // IE8 returns string on undefined
 	    if (!isArray$2(replacer)) replacer = function (key, value) {
 	      if (typeof $replacer == 'function') value = $replacer.call(this, key, value);
 	      if (!isSymbol(value)) return value;
@@ -983,53 +983,53 @@
 	});
 
 	// 19.1.2.5 Object.freeze(O)
-	var isObject$m = _isObject;
+	var isObject$n = _isObject;
 	var meta$4 = _metaExports.onFreeze;
 	_objectSap('freeze', function ($freeze) {
 	  return function freeze(it) {
-	    return $freeze && isObject$m(it) ? $freeze(meta$4(it)) : it;
+	    return $freeze && isObject$n(it) ? $freeze(meta$4(it)) : it;
 	  };
 	});
 
 	// 19.1.2.17 Object.seal(O)
-	var isObject$l = _isObject;
+	var isObject$m = _isObject;
 	var meta$3 = _metaExports.onFreeze;
 	_objectSap('seal', function ($seal) {
 	  return function seal(it) {
-	    return $seal && isObject$l(it) ? $seal(meta$3(it)) : it;
+	    return $seal && isObject$m(it) ? $seal(meta$3(it)) : it;
 	  };
 	});
 
 	// 19.1.2.15 Object.preventExtensions(O)
-	var isObject$k = _isObject;
+	var isObject$l = _isObject;
 	var meta$2 = _metaExports.onFreeze;
 	_objectSap('preventExtensions', function ($preventExtensions) {
 	  return function preventExtensions(it) {
-	    return $preventExtensions && isObject$k(it) ? $preventExtensions(meta$2(it)) : it;
+	    return $preventExtensions && isObject$l(it) ? $preventExtensions(meta$2(it)) : it;
 	  };
 	});
 
 	// 19.1.2.12 Object.isFrozen(O)
-	var isObject$j = _isObject;
+	var isObject$k = _isObject;
 	_objectSap('isFrozen', function ($isFrozen) {
 	  return function isFrozen(it) {
-	    return isObject$j(it) ? $isFrozen ? $isFrozen(it) : false : true;
+	    return isObject$k(it) ? $isFrozen ? $isFrozen(it) : false : true;
 	  };
 	});
 
 	// 19.1.2.13 Object.isSealed(O)
-	var isObject$i = _isObject;
+	var isObject$j = _isObject;
 	_objectSap('isSealed', function ($isSealed) {
 	  return function isSealed(it) {
-	    return isObject$i(it) ? $isSealed ? $isSealed(it) : false : true;
+	    return isObject$j(it) ? $isSealed ? $isSealed(it) : false : true;
 	  };
 	});
 
 	// 19.1.2.11 Object.isExtensible(O)
-	var isObject$h = _isObject;
+	var isObject$i = _isObject;
 	_objectSap('isExtensible', function ($isExtensible) {
 	  return function isExtensible(it) {
-	    return isObject$h(it) ? $isExtensible ? $isExtensible(it) : true : false;
+	    return isObject$i(it) ? $isExtensible ? $isExtensible(it) : true : false;
 	  };
 	});
 
@@ -1169,67 +1169,53 @@
 	  }, true);
 	}
 
-	var _invoke;
-	var hasRequired_invoke;
-	function require_invoke() {
-	  if (hasRequired_invoke) return _invoke;
-	  hasRequired_invoke = 1;
-	  // fast apply, http://jsperf.lnkit.com/fast-apply/5
-	  _invoke = function (fn, args, that) {
-	    var un = that === undefined;
-	    switch (args.length) {
-	      case 0:
-	        return un ? fn() : fn.call(that);
-	      case 1:
-	        return un ? fn(args[0]) : fn.call(that, args[0]);
-	      case 2:
-	        return un ? fn(args[0], args[1]) : fn.call(that, args[0], args[1]);
-	      case 3:
-	        return un ? fn(args[0], args[1], args[2]) : fn.call(that, args[0], args[1], args[2]);
-	      case 4:
-	        return un ? fn(args[0], args[1], args[2], args[3]) : fn.call(that, args[0], args[1], args[2], args[3]);
-	    }
-	    return fn.apply(that, args);
-	  };
-	  return _invoke;
-	}
+	// fast apply, http://jsperf.lnkit.com/fast-apply/5
+	var _invoke = function (fn, args, that) {
+	  var un = that === undefined;
+	  switch (args.length) {
+	    case 0:
+	      return un ? fn() : fn.call(that);
+	    case 1:
+	      return un ? fn(args[0]) : fn.call(that, args[0]);
+	    case 2:
+	      return un ? fn(args[0], args[1]) : fn.call(that, args[0], args[1]);
+	    case 3:
+	      return un ? fn(args[0], args[1], args[2]) : fn.call(that, args[0], args[1], args[2]);
+	    case 4:
+	      return un ? fn(args[0], args[1], args[2], args[3]) : fn.call(that, args[0], args[1], args[2], args[3]);
+	  }
+	  return fn.apply(that, args);
+	};
 
-	var _bind;
-	var hasRequired_bind;
-	function require_bind() {
-	  if (hasRequired_bind) return _bind;
-	  hasRequired_bind = 1;
-	  var aFunction = _aFunction;
-	  var isObject = _isObject;
-	  var invoke = require_invoke();
-	  var arraySlice = [].slice;
-	  var factories = {};
-	  var construct = function (F, len, args) {
-	    if (!(len in factories)) {
-	      for (var n = [], i = 0; i < len; i++) n[i] = 'a[' + i + ']';
-	      // eslint-disable-next-line no-new-func
-	      factories[len] = Function('F,a', 'return new F(' + n.join(',') + ')');
-	    }
-	    return factories[len](F, args);
+	var aFunction$d = _aFunction;
+	var isObject$h = _isObject;
+	var invoke$1 = _invoke;
+	var arraySlice$2 = [].slice;
+	var factories = {};
+	var construct = function (F, len, args) {
+	  if (!(len in factories)) {
+	    for (var n = [], i = 0; i < len; i++) n[i] = 'a[' + i + ']';
+	    // eslint-disable-next-line no-new-func
+	    factories[len] = Function('F,a', 'return new F(' + n.join(',') + ')');
+	  }
+	  return factories[len](F, args);
+	};
+	var _bind = Function.bind || function bind(that /* , ...args */) {
+	  var fn = aFunction$d(this);
+	  var partArgs = arraySlice$2.call(arguments, 1);
+	  var bound = function /* args... */
+	  () {
+	    var args = partArgs.concat(arraySlice$2.call(arguments));
+	    return this instanceof bound ? construct(fn, args.length, args) : invoke$1(fn, args, that);
 	  };
-	  _bind = Function.bind || function bind(that /* , ...args */) {
-	    var fn = aFunction(this);
-	    var partArgs = arraySlice.call(arguments, 1);
-	    var bound = function /* args... */
-	    () {
-	      var args = partArgs.concat(arraySlice.call(arguments));
-	      return this instanceof bound ? construct(fn, args.length, args) : invoke(fn, args, that);
-	    };
-	    if (isObject(fn.prototype)) bound.prototype = fn.prototype;
-	    return bound;
-	  };
-	  return _bind;
-	}
+	  if (isObject$h(fn.prototype)) bound.prototype = fn.prototype;
+	  return bound;
+	};
 
 	// 19.2.3.2 / 15.3.4.5 Function.prototype.bind(thisArg, args...)
 	var $export$1W = _export;
 	$export$1W($export$1W.P, 'Function', {
-	  bind: require_bind()
+	  bind: _bind
 	});
 
 	var dP$7 = _objectDp.f;
@@ -3529,7 +3515,7 @@
 	exports$1.RETURN = RETURN$1;
 
 	var ctx$5 = _ctx;
-	var invoke = require_invoke();
+	var invoke = _invoke;
 	var html = _html;
 	var cel = require_domCreate();
 	var global$c = _globalExports;
@@ -5381,7 +5367,7 @@
 	var anObject$k = _anObject;
 	var isObject$3 = _isObject;
 	var fails = _fails;
-	var bind = require_bind();
+	var bind = _bind;
 	var rConstruct = (_globalExports.Reflect || {}).construct;
 
 	// MS Edge supports only 2 arguments and argumentsList argument is optional

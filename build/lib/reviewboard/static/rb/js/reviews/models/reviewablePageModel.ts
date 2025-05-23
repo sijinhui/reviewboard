@@ -186,9 +186,9 @@ export class ReviewablePage<
         const pendingReview = this.get('pendingReview');
 
         await pendingReview.ready();
-        const temp_bodyTop = idElement == '' ? 'Ship It!' : `Ship It!|${idElement}`;
+
         pendingReview.set({
-            bodyTop: temp_bodyTop,
+            bodyTop: `Ship It!|${idElement}`,
             shipIt: true,
         });
         await pendingReview.publish();
