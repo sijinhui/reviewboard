@@ -92,7 +92,7 @@ class ReviewResource(BaseReviewResource):
         post_data['body_top'] =body_top[0]
         request._post = post_data
 
-        diff_revision_id = body_top[-1] if len(body_top) > 1 else None
+        diff_revision_id = str(body_top[-1]) if len(body_top) > 1 else None
         from reviewboard.diffviewer.models.diffset import DiffSet
         from reviewboard.reviews.models.review_request import ReviewRequest
         if diff_revision_id:
@@ -103,10 +103,10 @@ class ReviewResource(BaseReviewResource):
                 ).order_by('-timestamp').values('revision').first()
 
                 if diff_msg:
-                    if diff_msg['revision'] != diff_revision_id:
+                    if str(diff_msg['revision']) != diff_revision_id:
                         return INVALID_FORM_DATA, {
                             'fields': {
-                                'diff_revision_err': '当前审批的diff版本已过时，请刷新页面重新审批!',
+                                'diff_revision_err': f'当前审批的diff版本已过时，请刷新页面重新审批!{diff_msg["revision"]}',
                             }
                         }
 
