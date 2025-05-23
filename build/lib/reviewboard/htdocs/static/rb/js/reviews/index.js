@@ -2217,9 +2217,7 @@
         const pendingReview = this.get('pendingReview');
         await pendingReview.ready();
         pendingReview.set({
-          bodyTop: interpolate(gettext("Ship It!|%(idElement)s"), {
-            "idElement": idElement
-          }, true),
+          bodyTop: `Ship It!|${idElement}`,
           shipIt: true
         });
         await pendingReview.publish();

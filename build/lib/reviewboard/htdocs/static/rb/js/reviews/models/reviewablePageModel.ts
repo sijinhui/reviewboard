@@ -188,7 +188,7 @@ export class ReviewablePage<
         await pendingReview.ready();
 
         pendingReview.set({
-            bodyTop: _`Ship It!|${idElement}`,
+            bodyTop: `Ship It!|${idElement}`,
             shipIt: true,
         });
         await pendingReview.publish();

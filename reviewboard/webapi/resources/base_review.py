@@ -264,7 +264,7 @@ class BaseReviewResource(MarkdownFieldsMixin, WebAPIResource):
                 if str(diff_msg['revision']) != diff_revision_id:
                     return INVALID_FORM_DATA, {
                         'fields': {
-                            'diff_revision_err': f'当前审批的diff版本已过时，请刷新页面重新审批!{diff_msg["revision"]}',
+                            'diff_revision_err': f'当前审批的diff版本已过时，请刷新页面重新审批!',
                         }
                     }
 

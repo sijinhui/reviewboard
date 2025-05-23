@@ -1,11 +1,13 @@
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
+from django.http import JsonResponse
+
 from djblets.util.decorators import augment_method_from
 from djblets.webapi.decorators import (webapi_login_required,
                                        webapi_response_errors,
                                        webapi_request_fields)
 from djblets.webapi.errors import (DOES_NOT_EXIST, NOT_LOGGED_IN,
-                                   PERMISSION_DENIED)
+                                   PERMISSION_DENIED, INVALID_FORM_DATA)
 from djblets.webapi.fields import (BooleanFieldType,
                                    ChoiceFieldType,
                                    DateTimeFieldType,
@@ -235,17 +237,44 @@ class BaseReviewResource(MarkdownFieldsMixin, WebAPIResource):
         a payload and with a ``Location`` header pointing to the location of
         the new draft review.
         """
+
         try:
             review_request = \
                 resources.review_request.get_object(request, *args, **kwargs)
         except ObjectDoesNotExist:
             return DOES_NOT_EXIST
+        post_data = request.POST.copy()
+        body_top = post_data.get('body_top').split('|')
+        post_data['body_top'] = body_top[0]
+        post_data['can_update'] = False
+        request._post = post_data
+        for k, v in kwargs.items():
+            if k == 'body_top':
+                kwargs[k] = body_top[0]
+        diff_revision_id = str(body_top[-1]) if len(body_top) > 1 else None
+        from reviewboard.diffviewer.models.diffset import DiffSet
+
+        if diff_revision_id:
+
+            diff_msg = DiffSet.objects.filter(
+                history_id=review_request.diffset_history_id
+            ).order_by('-timestamp').values('revision').first()
+
+            if diff_msg:
+                if str(diff_msg['revision']) != diff_revision_id:
+                    return INVALID_FORM_DATA, {
+                        'fields': {
+                            'diff_revision_err': f'当前审批的diff版本已过时，请刷新页面重新审批!',
+                        }
+                    }
 
         review, is_new = Review.objects.get_or_create(
             review_request=review_request,
             user=request.user,
             public=False,
             **self.get_base_reply_to_field(*args, **kwargs))
+
+
 
         if is_new:
             status_code = 201  # Created
