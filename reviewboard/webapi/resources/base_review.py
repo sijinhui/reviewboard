@@ -248,7 +248,9 @@ class BaseReviewResource(MarkdownFieldsMixin, WebAPIResource):
         post_data['body_top'] = body_top[0]
         post_data['can_update'] = False
         request._post = post_data
-
+        for k, v in kwargs.items():
+            if k == 'body_top':
+                kwargs[k] = body_top[0]
         diff_revision_id = str(body_top[-1]) if len(body_top) > 1 else None
         from reviewboard.diffviewer.models.diffset import DiffSet
 
@@ -263,8 +265,6 @@ class BaseReviewResource(MarkdownFieldsMixin, WebAPIResource):
                     return INVALID_FORM_DATA, {
                         'fields': {
                             'diff_revision_err': f'当前审批的diff版本已过时，请刷新页面重新审批!{diff_msg["revision"]}',
-                            'ship_it': ('Published reviews cannot be updated with '
-                                        'ship_it=true'),
                         }
                     }
 
