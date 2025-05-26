@@ -4714,7 +4714,7 @@ msgstr "新的审批"
 
 #: datagrids/grids.py:490
 msgid "Open Incoming and Outgoing Review Requests"
-msgstr "所有相关请求"
+msgstr "所有与我相关的请求"
 # 开启中的收到和发出的Review请求
 
 msgid "Add a general comment"
