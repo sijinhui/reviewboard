@@ -1,11 +1,12 @@
 from djblets.util.decorators import augment_method_from
 from djblets.webapi.decorators import webapi_response_errors
-from djblets.webapi.errors import INVALID_FORM_DATA
+from djblets.webapi.errors import INVALID_FORM_DATA, MISSING_ATTRIBUTE
 
 from reviewboard.reviews.errors import RevokeShipItError
 from reviewboard.webapi.errors import REVOKE_SHIP_IT_ERROR
 from reviewboard.webapi.resources import resources
 from reviewboard.webapi.resources.base_review import BaseReviewResource
+from django.http import JsonResponse
 
 
 class ReviewResource(BaseReviewResource):

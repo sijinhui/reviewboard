@@ -509,6 +509,7 @@ class DashboardDataGrid(DataGridSidebarMixin, ReviewRequestDataGrid):
             queryset = ReviewRequest.objects.to_or_from_user(
                 user,  # The target user
                 user,  # The accessing user
+                status=None,
                 distinct=False,
                 local_site=self.local_site)
             title = _('Open Incoming and Outgoing Review Requests')

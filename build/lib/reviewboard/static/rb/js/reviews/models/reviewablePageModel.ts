@@ -182,13 +182,14 @@ export class ReviewablePage<
      * This will create and publish a review, setting the Ship It state and
      * changing the text to say "Ship It!".
      */
-    async markShipIt() {
+    async markShipIt(idElement = '') {
         const pendingReview = this.get('pendingReview');
 
         await pendingReview.ready();
-
+        const temp_bodyTop = idElement === '' ?
+            'Ship It!' : `Ship It!|${idElement}`;
         pendingReview.set({
-            bodyTop: _`Ship It!`,
+            bodyTop: temp_bodyTop,
             shipIt: true,
         });
         await pendingReview.publish();

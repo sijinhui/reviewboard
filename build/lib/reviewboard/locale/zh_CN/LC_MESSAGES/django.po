@@ -1506,11 +1506,11 @@ msgstr "差异文件相对更新时间"
 
 #: datagrids/grids.py:214
 msgid "All Outgoing Review Requests"
-msgstr "所有我发出的Review请求"
+msgstr "提出的的开启中的Review请求"
 
 #: datagrids/grids.py:218
 msgid "All My Review Requests"
-msgstr "所有我的Review请求"
+msgstr "提出的所有Review请求"
 
 #: datagrids/grids.py:222
 msgid "Incoming Review Requests to Me"
@@ -1519,7 +1519,7 @@ msgstr "给我的Review请求"
 #: datagrids/grids.py:239
 #, python-format
 msgid "Incoming Review Requests to %s"
-msgstr "给 %s 的 Review Requests"
+msgstr "给 %s 的Review请求"
 
 #: datagrids/grids.py:243
 msgid "All Incoming Review Requests to My Groups"
@@ -1531,7 +1531,11 @@ msgstr "标记型号的 Review Requests"
 
 #: datagrids/grids.py:251
 msgid "All Incoming Review Requests"
-msgstr "所有收到的 Review Requests"
+msgstr "收到的开启中的Review请求"
+
+#: datagrids/grids.py:251
+msgid "All Incoming Review Requests with closed"
+msgstr "收到的所有Review请求"
 
 #: datagrids/grids.py:261
 msgid "Full Name"
@@ -4710,7 +4714,7 @@ msgstr "新的审批"
 
 #: datagrids/grids.py:490
 msgid "Open Incoming and Outgoing Review Requests"
-msgstr ""
+msgstr "所有与我相关的请求"
 # 开启中的收到和发出的Review请求
 
 msgid "Add a general comment"

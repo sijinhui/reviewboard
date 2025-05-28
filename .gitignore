@@ -33,7 +33,6 @@ docs/manual/extending/coderef/python
 
 reviewboard/htdocs/media/djblets
 reviewboard/htdocs/media/uploaded
-reviewboard/htdocs/static
 
 docs/manual/data/htdocs/media/uploaded/
 _build
@@ -64,3 +63,6 @@ djblets/
 reviewboard/scmtools/testdata/hg_repo/.hg/
 
 *.sqlite3
+
+.venv/
+venv/

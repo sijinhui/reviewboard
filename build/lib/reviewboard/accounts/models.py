@@ -778,6 +778,7 @@ class LocalSiteProfile(models.Model):
             ReviewRequest.objects.to_user(
                 p.user, local_site=p.local_site).count()
             if p.user_id else 0))
+
     pending_outgoing_request_count = CounterField(
         _('pending outgoing review request count'),
         initializer=lambda p: (
