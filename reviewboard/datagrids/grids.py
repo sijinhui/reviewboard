@@ -512,7 +512,7 @@ class DashboardDataGrid(DataGridSidebarMixin, ReviewRequestDataGrid):
                 status=None,
                 distinct=False,
                 local_site=self.local_site)
-            title = _('Open Incoming and Outgoing Review Requests')
+            title = _('Open Incoming and Outgoing Review Requests') + f" / {queryset.count()}"
         elif view == 'mine':
             queryset = ReviewRequest.objects.from_user(
                 user,  # The target user

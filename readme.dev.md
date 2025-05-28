@@ -16,6 +16,7 @@ cd djblets && pip install -e . && cd ..
 # 安装python依赖
 # pip install -r dev-requirements.txt
 # pip install -e .
+# pip install --force-reinstall --no-binary :all: lxml xmlsec
 python ./setup.py develop
 # 环境准备
 python ./contrib/internal/prepare-dev.py
