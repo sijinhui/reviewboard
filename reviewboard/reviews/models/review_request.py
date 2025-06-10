@@ -883,9 +883,13 @@ class ReviewRequest(BaseReviewRequestDetails):
             bool:
             Whether the user can modify this review request.
         """
-        return ((self.submitter == user or
-                 user.has_perm('reviews.can_edit_reviewrequest',
-                               self.local_site)) and
+        # 如果用户是已经被指派的审批人，允许其有可编辑权限
+        is_reviewer = self.target_people.filter(pk=user.pk).exists()
+        return (((self.submitter == user or
+                  user.has_perm('reviews.can_edit_reviewrequest',
+                                self.local_site) or
+                  is_reviewer)  # <---- 新增此处
+                                ) and
                 not is_site_read_only_for(user))
 
     def is_status_mutable_by(
